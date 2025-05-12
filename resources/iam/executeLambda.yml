@@ -1,0 +1,56 @@
+executeLambda:
+  Type: AWS::IAM::Role
+  Properties:
+    RoleName: lambda-${self:app}-${self:provider.stage}-execute
+    AssumeRolePolicyDocument:
+      Version: '2012-10-17'
+      Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+              - lambda.amazonaws.com
+          Action: sts:AssumeRole
+    Policies:
+      - PolicyName: ${self:app}-${self:provider.stage}-ses-send-policy
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: "Allow"
+              Action: 
+              - ses:SendEmail
+              - ses:SendRawEmail
+              Resource: "*"
+      - PolicyName: ${self:app}-${self:provider.stage}-s3-read-policy
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: "Allow"
+              Action: 
+              - s3:GetObject
+              Resource: "*"
+      - PolicyName: ${self:app}-${self:provider.stage}-cloudwatch-write
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: "Allow"
+              Action:
+              - logs:CreateLogGroup
+              - logs:CreateLogStream
+              - logs:PutLogEvents
+              Resource: "*"
+      - PolicyName: ${self:app}-${self:provider.stage}-cognito
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: "Allow"
+              Action:
+              - cognito-idp:*
+              Resource: "*"
+      - PolicyName: ${self:app}-${self:provider.stage}-lambda
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: "Allow"
+              Action:
+              - lambda:InvokeFunction
+              Resource: "*"

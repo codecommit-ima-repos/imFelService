@@ -1,0 +1,46 @@
+service: imfelservice
+app: imfel
+org: imagt
+frameworkVersion: "3"
+configValidationMode: error
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  versionFunctions: false
+  stage: dev
+  region: us-east-1
+  timeout: 30
+  memorySize: 2048
+  tracing:
+    lambda: true
+    apiGateway: true
+
+package:
+  patterns:
+    - "!node_modules/**"
+
+custom:
+  enterprise:
+    collectLambdaLogs: false
+
+functions: ${file(resources/function.yml)}
+
+layers:
+  axios:
+    path: ./layers/axios
+  axios-error:
+    path: ./layers/axios-error
+  mysql2:
+    path: ./layers/mysql2
+  uuid:
+    path: ./layers/uuid
+  xml2js:
+    path: ./layers/xml2js
+  form-data:
+    path: ./layers/form-data
+
+resources:
+  Resources:
+    # iam role
+    executeLambda: ${file(resources/iam/executeLambda.yml):executeLambda}

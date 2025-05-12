@@ -1,0 +1,22 @@
+invoiceMegaprintCancel:
+  handler: functions/invoice/invoiceFunction/js/invoiceMegaprintCancel.invoiceMegaprintCancel
+  timeout: 12
+  environment:
+    stage: ${self:provider.stage}
+  role: executeLambda
+  layers:
+    - !Ref AxiosLambdaLayer
+    - !Ref AxiosDasherrorLambdaLayer
+    - !Ref Xml2jsLambdaLayer
+    - !Ref Mysql2LambdaLayer
+    - !Ref UuidLambdaLayer
+  events:
+    - http:
+        path: ${self:app}-invoice/megaprint/cancel
+        method: POST
+        integration: lambda
+        # authorizer:
+        #   type: COGNITO_USER_POOLS
+        #   authorizerId:
+        #     Ref: apiGatewayAuthorizer
+        cors: true

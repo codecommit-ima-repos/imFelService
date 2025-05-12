@@ -1,0 +1,34 @@
+# invoice
+# # infile
+invoiceInfile: ${file(functions/invoice/invoiceFunction/yml/invoiceInfile.yml):invoiceInfile}
+invoiceInfileCancel: ${file(functions/invoice/invoiceFunction/yml/invoiceInfileCancel.yml):invoiceInfileCancel}
+# # megaprint
+invoiceMegaprint: ${file(functions/invoice/invoiceFunction/yml/invoiceMegaprint.yml):invoiceMegaprint}
+invoiceMegaprintCancel: ${file(functions/invoice/invoiceFunction/yml/invoiceMegaprintCancel.yml):invoiceMegaprintCancel}
+invoiceMegaprintGetPdf: ${file(functions/invoice/invoiceFunction/yml/invoiceMegaprintGetPdf.yml):invoiceMegaprintGetPdf}
+# client
+# # infile
+clientGetTaxDocumentInfile: ${file(functions/client/clientFunction/yml/clientGetTaxDocumentInfile.yml):clientGetTaxDocumentInfile}
+clientGetIdentificationDocumentInfile: ${file(functions/client/clientFunction/yml/clientGetIdentificationDocumentInfile.yml):clientGetIdentificationDocumentInfile}
+# # megaprint
+clientGetTaxDocumentMegaprint: ${file(functions/client/clientFunction/yml/clientGetTaxDocumentMegaprint.yml):clientGetTaxDocumentMegaprint}
+# creditNote
+# # infile
+creditNoteInfile: ${file(functions/creditNote/creditNoteFunction/yml/creditNoteInfile.yml):creditNoteInfile}
+# # megaprint
+creditNoteMegaprint: ${file(functions/creditNote/creditNoteFunction/yml/creditNoteMegaprint.yml):creditNoteMegaprint}
+# debitNote
+# # infile
+debitNoteInfile: ${file(functions/debitNote/debitNoteFunction/yml/debitNoteInfile.yml):debitNoteInfile}
+# # megaprint
+debitNoteMegaprint: ${file(functions/debitNote/debitNoteFunction/yml/debitNoteMegaprint.yml):debitNoteMegaprint}
+# invoiceExport
+# # infile
+invoiceExportInfile: ${file(functions/invoiceExport/invoiceExportFunction/yml/invoiceExportInfile.yml):invoiceExportInfile}
+# invoiceExchange
+# # infile
+invoiceExchangeInfile: ${file(functions/invoiceExchange/invoiceExchangeFunction/yml/invoiceExchangeInfile.yml):invoiceExchangeInfile}
+invoiceExchangeInfileCancel: ${file(functions/invoiceExchange/invoiceExchangeFunction/yml/invoiceExchangeInfileCancel.yml):invoiceExchangeInfileCancel}
+# # megaprint
+invoiceExchangeMegaprint: ${file(functions/invoiceExchange/invoiceExchangeFunction/yml/invoiceExchangeMegaprint.yml):invoiceExchangeMegaprint}
+invoiceExchangeMegaprintCancel: ${file(functions/invoiceExchange/invoiceExchangeFunction/yml/invoiceExchangeMegaprintCancel.yml):invoiceExchangeMegaprintCancel}
